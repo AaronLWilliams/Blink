@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public LayerMask redLayer;
 
     public Rigidbody2D rb;
     public Transform pivotPoint;
@@ -35,12 +36,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the player is on the ground
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, redLayer);
+
         //Player Movement
         float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
-        // Check if the player is on the ground
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        if (isGrounded)
+        {
+            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        }
 
         // Jumping
         if (isGrounded && Input.GetButtonDown("Jump"))
@@ -48,9 +52,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
+        //Reload Level
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //restart level
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         //Fires Gun
