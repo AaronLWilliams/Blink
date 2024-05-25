@@ -22,6 +22,7 @@ public class LevelTrigger : MonoBehaviour
             {
                 //No more scenes to load
                 Debug.Log("No more scenes to load.");
+                SceneManager.LoadScene(0);
             }
         }
     }

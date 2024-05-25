@@ -53,19 +53,26 @@ public class PlayerController : MonoBehaviour
         }
 
         //Reload Level
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !PauseMenu.isPaused)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         //Fires Gun
-        if (Input.GetMouseButtonDown(0) && !isFireCooldown)
+        if (Input.GetMouseButtonDown(0) && !isFireCooldown && !PauseMenu.isPaused)
         {
+            // Find every instace tagged Bullet and destroys it
+            GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+            foreach (GameObject bullet in bullets)
+            {
+                Destroy(bullet);
+            }
+
             Fire();
             StartCoroutine(FireCooldown());
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused)
         {
             Teleport();
         }
