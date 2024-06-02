@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - NoBounce
   layers:
   - Default
   - TransparentFX

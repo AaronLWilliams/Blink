@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,9 +21,11 @@ public class PlayerController : MonoBehaviour
     private float cooldown = 1f;
     private bool isFireCooldown = false;
     private bool isGrounded;
+    private bool  isReverse = false;
     public GameObject bulletPrefab;
     public Transform firePoint;
     private GameObject activeBullet;
+    public TextMeshProUGUI bulletTypeText;
 
     Vector2 movementDirection;
     Vector2 mousePosition;
@@ -31,6 +34,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //default state for bullet text UI
+        bulletTypeText.text = "Normal";
     }
 
     // Update is called once per frame
@@ -58,6 +63,21 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        //switch bullet type
+        if (Input.GetKeyDown(KeyCode.Q) && !PauseMenu.isPaused)
+        {
+            isReverse = !isReverse;
+            //changes ui element for bullet type
+            if(isReverse)
+            {
+                bulletTypeText.text = "Reverse";
+            }
+            else
+            {
+                bulletTypeText.text = "Normal";
+            }
+        }
+
         //Fires Gun
         if (Input.GetMouseButtonDown(0) && !isFireCooldown && !PauseMenu.isPaused)
         {
@@ -72,6 +92,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(FireCooldown());
         }
 
+        //Teleport to bullet
         if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused)
         {
             Teleport();
@@ -117,6 +138,12 @@ public class PlayerController : MonoBehaviour
             // Destroy the bullet
             Destroy(activeBullet);
             activeBullet = null; // Reset the active bullet reference
+
+            //if isReversed then flip velocity
+            if(isReverse)
+            {
+                rb.velocity = -rb.velocity;
+            }
         }
     }
 

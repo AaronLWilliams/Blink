@@ -24,6 +24,11 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "NoBounce")
+        {
+            Destroy(gameObject);
+            return;
+        }
         // Get the collision normal
         Vector2 normal = collision.contacts[0].normal;
 
