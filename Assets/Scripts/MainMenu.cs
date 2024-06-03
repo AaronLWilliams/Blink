@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject bulletPrefab;
     void Start()
     {
+        Time.timeScale = 1f;
         GameObject bullet = Instantiate(bulletPrefab, Vector3.zero, transform.rotation);
         Bullet bulletObj = bullet.GetComponent<Bullet>();
 

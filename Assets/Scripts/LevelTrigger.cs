@@ -1,29 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelTrigger : MonoBehaviour
 {
-    public string levelToLoad;
+    public GameObject CompleteMenu;
+    public GameManager gameManager;
+    public TextMeshProUGUI timerText;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex = currentSceneIndex + 1;
-            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-            {
-                // Load the next scene
-                SceneManager.LoadScene(nextSceneIndex);
-            }
-            else
-            {
-                //No more scenes to load
-                Debug.Log("No more scenes to load.");
-                SceneManager.LoadScene(0);
-            }
+            Destroy(collision.gameObject);
+            CompleteMenu.SetActive(true);
+            Time.timeScale = 0f;
+            timerText.text = "Time: " + gameManager.timerText.text;
         }
     }
+
+    
 }

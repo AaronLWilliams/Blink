@@ -7,10 +7,12 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    public string levelToLoad;
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -53,5 +55,22 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ContinueButton()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            // Load the next scene
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            //No more scenes to load
+            Debug.Log("No more scenes to load.");
+            SceneManager.LoadScene(0);
+        }
     }
 }
