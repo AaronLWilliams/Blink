@@ -1798,6 +1798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 215732849}
+  time: 0
 --- !u!4 &1369248025
 Transform:
   m_ObjectHideFlags: 0
@@ -1861,6 +1862,7 @@ MonoBehaviour:
   CompleteMenu: {fileID: 606437702}
   gameManager: {fileID: 1369248024}
   timerText: {fileID: 902968342}
+  bestTimeText: {fileID: 4554648588406562900}
 --- !u!61 &1878292467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2122,6 +2124,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+--- !u!114 &4554648588406562900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7705611334218222816, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+  m_PrefabInstance: {fileID: 4554648588406562899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

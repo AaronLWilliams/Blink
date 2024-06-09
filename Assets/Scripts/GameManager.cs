@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     private float startTime;
     private bool isTimerRunning = true;
+    public float time;
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
+        string levelName = SceneManager.GetActiveScene().name;
+        SaveSystem.UnlockLevel(levelName);
     }
 
     // Update is called once per frame
@@ -20,10 +24,10 @@ public class GameManager : MonoBehaviour
         //UI for timer
         if (isTimerRunning)
         {
-            float t = Time.time - startTime;
+            time = Time.time - startTime;
 
-            string minutes = ((int)t / 60).ToString("00");
-            string seconds = (t % 60).ToString("00");
+            string minutes = ((int)time / 60).ToString("00");
+            string seconds = (time % 60).ToString("00");
 
             timerText.text = minutes + ":" + seconds;
         }

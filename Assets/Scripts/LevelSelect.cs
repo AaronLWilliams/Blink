@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
+    private void Start()
+    {
+        
+    }
+
+    //On click events
     public void Level1()
     {
-            SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2);
     }
     public void Level2()
     {
