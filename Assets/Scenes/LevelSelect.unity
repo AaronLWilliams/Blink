@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 1
     m_Right: 1
-    m_Top: 1
+    m_Top: 4
     m_Bottom: 1
   m_ChildAlignment: 0
   m_StartCorner: 0

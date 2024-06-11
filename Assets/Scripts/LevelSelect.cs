@@ -9,7 +9,7 @@ public class LevelSelect : MonoBehaviour
     public GameObject levelButtonPrefab; // Prefab for the level buttons
     public Transform levelButtonContainer; // Container for the level buttons
 
-    private int levelCount = 4;
+    private int levelCount = 6;
 
     private SaveData saveData;
 
