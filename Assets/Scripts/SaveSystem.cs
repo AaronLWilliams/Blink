@@ -40,7 +40,7 @@ public class SaveSystem : MonoBehaviour
         SaveToFile(data);
     }
 
-    private static void SaveToFile(SaveData data)
+    public static void SaveToFile(SaveData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/savefile.bin";
@@ -50,9 +50,10 @@ public class SaveSystem : MonoBehaviour
         stream.Close();
     }
 
+    private static string path = Application.persistentDataPath + "/savefile.bin";
+
     public static SaveData LoadGame()
     {
-        string path = Application.persistentDataPath + "/savefile.bin";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -65,8 +66,15 @@ public class SaveSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
-            return null;
+            // Create a new save data if the file does not exist
+            SaveData newSaveData = new SaveData();
+            SaveToFile(newSaveData);
+            return newSaveData;
         }
+    }
+
+    public static bool SaveFileExists()
+    {
+        return File.Exists(path);
     }
 }

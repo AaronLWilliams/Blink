@@ -25,6 +25,7 @@ public class LevelSelect : MonoBehaviour
         if (saveData == null)
         {
             saveData = new SaveData();
+            SaveSystem.SaveToFile(saveData);
         }
     }
 

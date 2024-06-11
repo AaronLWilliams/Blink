@@ -13,4 +13,10 @@ public class LevelData
 public class SaveData
 {
     public Dictionary<string, LevelData> levels = new Dictionary<string, LevelData>();
+
+    public SaveData()
+    {
+        // Ensure Level1 is always unlocked
+        levels["Level1"] = new LevelData { bestTime = 999f, isUnlocked = true };
+    }
 }
