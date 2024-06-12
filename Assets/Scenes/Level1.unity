@@ -1863,6 +1863,7 @@ MonoBehaviour:
   gameManager: {fileID: 1369248024}
   timerText: {fileID: 902968342}
   bestTimeText: {fileID: 4554648588406562900}
+  time: 0
 --- !u!61 &1878292467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2019,6 +2020,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 45959049490809849, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1369248026}
+    - target: {fileID: 45959049490809849, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetryButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1252316876093188367, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
