@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
+    public float acceleration = 10f;
     public float jumpForce = 5.0f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
@@ -46,9 +47,15 @@ public class PlayerController : MonoBehaviour
 
         //Player Movement
         float moveInput = Input.GetAxis("Horizontal");
-        if (isGrounded)
+        if (isGrounded && moveInput != 0)
         {
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            // Apply acceleration
+            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, moveInput * moveSpeed, acceleration * Time.deltaTime), rb.velocity.y);
+        }
+        else if(isGrounded)
+        {
+            // Apply deceleration
+            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, acceleration * Time.deltaTime), rb.velocity.y);
         }
 
         // Jumping
@@ -157,5 +164,13 @@ public class PlayerController : MonoBehaviour
         isFireCooldown = true;
         yield return new WaitForSeconds(cooldown);
         isFireCooldown = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

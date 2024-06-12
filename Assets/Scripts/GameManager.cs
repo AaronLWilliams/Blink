@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
             timerText.text = minutes + ":" + seconds;
         }
+
     }
 
     public void StopTimer()

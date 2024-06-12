@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1874554789097689841}
   - component: {fileID: 5701800652459839010}
   m_Layer: 8
-  m_Name: BWall
+  m_Name: BLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
