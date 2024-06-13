@@ -52,4 +52,9 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = !IsWindowed;
     }
+
+    public void clearSaveData ()
+    {
+        SaveSystem.ClearSaveData();
+    }
 }

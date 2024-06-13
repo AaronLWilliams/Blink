@@ -77,4 +77,13 @@ public class SaveSystem : MonoBehaviour
     {
         return File.Exists(path);
     }
+
+    public static void ClearSaveData()
+    {
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("Save data cleared.");
+        }
+    }
 }

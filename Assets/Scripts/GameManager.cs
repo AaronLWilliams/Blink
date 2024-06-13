@@ -28,8 +28,9 @@ public class GameManager : MonoBehaviour
 
             string minutes = ((int)time / 60).ToString("00");
             string seconds = (time % 60).ToString("00");
+            string milliseconds = ((int)((time * 1000) % 1000)).ToString("000");
 
-            timerText.text = minutes + ":" + seconds;
+            timerText.text = minutes + ":" + seconds + ":" + milliseconds;
         }
 
     }

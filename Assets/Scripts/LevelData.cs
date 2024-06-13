@@ -17,6 +17,6 @@ public class SaveData
     public SaveData()
     {
         // Ensure Level1 is always unlocked
-        levels["Level1"] = new LevelData { bestTime = 999f, isUnlocked = true };
+        levels["Level1"] = new LevelData { bestTime = 900f, isUnlocked = true };
     }
 }
