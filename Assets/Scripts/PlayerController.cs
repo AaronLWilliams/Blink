@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool isFireCooldown = false;
     private bool isGrounded;
     private bool  isReverse = false;
+    public bool isFirePointInNoShootZone = false;
     public GameObject bulletPrefab;
     public Transform firePoint;
     private GameObject activeBullet;
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Fires Gun
-        if (Input.GetMouseButtonDown(0) && !isFireCooldown && !PauseMenu.isPaused)
+        if (Input.GetMouseButtonDown(0) && !isFireCooldown && !PauseMenu.isPaused && !isFirePointInNoShootZone)
         {
             // Find every instace tagged Bullet and destroys it
             GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour
             Teleport();
         }
 
-        //If Player dies
+        CheckFirePointPosition();
     }
 
     private void FixedUpdate()
@@ -171,6 +172,22 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Death")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    
+    private void CheckFirePointPosition()
+    {
+        Collider2D[] colliders = Physics2D.OverlapPointAll(firePoint.position);
+        isFirePointInNoShootZone = false;
+
+        foreach (var collider in colliders)
+        {
+            if (collider.gameObject.tag == "NoShoot")
+            {
+                isFirePointInNoShootZone = true;
+                break;
+            }
         }
     }
 }

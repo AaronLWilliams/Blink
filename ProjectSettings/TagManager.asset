@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - NoBounce
   - Death
+  - NoShoot
   layers:
   - Default
   - TransparentFX
