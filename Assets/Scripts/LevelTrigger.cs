@@ -33,8 +33,9 @@ public class LevelTrigger : MonoBehaviour
                 time = levelData.bestTime;
                 string minutes = ((int)time / 60).ToString("00");
                 string seconds = (time % 60).ToString("00");
+                string milliseconds = ((int)((time * 1000) % 1000)).ToString("000");
 
-                bestTimeText.text = "Best Time: " + minutes + ":" + seconds;
+                bestTimeText.text = "Best Time: " + minutes + ":" + seconds + ":" + milliseconds;
             }
             else
             {

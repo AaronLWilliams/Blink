@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
-    public float acceleration = 10f;
+    public float acceleration = 15f;
     public float jumpForce = 5.0f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
