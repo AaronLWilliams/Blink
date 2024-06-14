@@ -53,4 +53,20 @@ public class Bullet : MonoBehaviour
             OnDestroyed();
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "NoTeleport")
+        {
+            PlayerController.isInNoTeloportZone = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "NoTeleport")
+        {
+            PlayerController.isInNoTeloportZone = false;
+        }
+    }
 }

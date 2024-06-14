@@ -8,6 +8,7 @@ TagManager:
   - NoBounce
   - Death
   - NoShoot
+  - NoTeleport
   layers:
   - Default
   - TransparentFX

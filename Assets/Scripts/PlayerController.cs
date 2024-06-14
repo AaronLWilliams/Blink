@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool isFireCooldown = false;
     private bool isGrounded;
     private bool  isReverse = false;
+    public static bool isInNoTeloportZone = false;
     public bool isFirePointInNoShootZone = false;
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Teleport to bullet
-        if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused)
+        if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused && !isInNoTeloportZone)
         {
             Teleport();
         }

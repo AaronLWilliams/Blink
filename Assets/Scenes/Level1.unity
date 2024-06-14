@@ -1408,6 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  acceleration: 15
   jumpForce: 5
   groundCheck: {fileID: 594266122}
   groundCheckRadius: 0.2
@@ -1421,6 +1422,7 @@ MonoBehaviour:
   pivotPoint: {fileID: 29618755}
   gameManager: {fileID: 1369248024}
   player: {fileID: 610384938}
+  isFirePointInNoShootZone: 0
   bulletPrefab: {fileID: 4214681941079370749, guid: 593bbfba016204f46b154a2b10244fe0, type: 3}
   firePoint: {fileID: 1280478858}
   bulletTypeText: {fileID: 1321099062}
