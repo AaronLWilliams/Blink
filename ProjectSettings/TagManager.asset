@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Area
+    uniqueID: 3954199489
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
