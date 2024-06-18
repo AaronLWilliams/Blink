@@ -17,11 +17,13 @@ public class LevelTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            gameManager.StopTimer();
             Destroy(collision.gameObject);
             CompleteMenu.SetActive(true);
             Time.timeScale = 0f;
             //Output this time
             timerText.text = "Time: " + gameManager.timerText.text;
+            Debug.Log(gameManager.time);
             //Check for new best time
             string levelName = SceneManager.GetActiveScene().name;
             SaveSystem.SaveBestTime(levelName, gameManager.time);
@@ -32,7 +34,7 @@ public class LevelTrigger : MonoBehaviour
                 LevelData levelData = data.levels[levelName];
                 time = levelData.bestTime;
                 string minutes = ((int)time / 60).ToString("00");
-                string seconds = (time % 60).ToString("00");
+                string seconds = ((int)time % 60).ToString("00");
                 string milliseconds = ((int)((time * 1000) % 1000)).ToString("000");
 
                 bestTimeText.text = "Best Time: " + minutes + ":" + seconds + ":" + milliseconds;
