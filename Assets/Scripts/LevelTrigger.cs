@@ -23,7 +23,6 @@ public class LevelTrigger : MonoBehaviour
             Time.timeScale = 0f;
             //Output this time
             timerText.text = "Time: " + gameManager.timerText.text;
-            Debug.Log(gameManager.time);
             //Check for new best time
             string levelName = SceneManager.GetActiveScene().name;
             SaveSystem.SaveBestTime(levelName, gameManager.time);
