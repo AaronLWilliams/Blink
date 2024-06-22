@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 702463365}
   - component: {fileID: 702463364}
   - component: {fileID: 702463363}
+  - component: {fileID: 702463367}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -716,7 +717,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 32.321793
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -747,6 +748,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &702463367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702463362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417f650c6d577c944a546c6fbe642860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelWidth: 60
+  levelHeight: 25
 --- !u!1 &780554085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1561,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 442983481}
+    - target: {fileID: 1688116800111387250, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_text
+      value: Pressing q will change how your teleport works.  Normal means you keep
+        you current momentum while Reverse means that your current momentum will
+        be reversed when you teleport.
+      objectReference: {fileID: 0}
     - target: {fileID: 6128403744473734509, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
