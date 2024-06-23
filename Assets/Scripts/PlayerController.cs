@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     private GameObject activeBullet;
     public TextMeshProUGUI bulletTypeText;
 
+    private AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip deathSound;
+
     Vector2 movementDirection;
     Vector2 mousePosition;
 
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //default state for bullet text UI
         bulletTypeText.text = "Normal";
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            PlaySound(jumpSound);
         }
 
         //Reload Level
@@ -168,10 +174,20 @@ public class PlayerController : MonoBehaviour
         isFireCooldown = false;
     }
 
+    void PlaySound(AudioClip clip)
+    {
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Death")
         {
+            PlaySound(deathSound);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

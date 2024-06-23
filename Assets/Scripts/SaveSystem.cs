@@ -34,7 +34,7 @@ public class SaveSystem : MonoBehaviour
         }
         else
         {
-            data.levels[levelName] = new LevelData { bestTime = 999f, isUnlocked = true };
+            data.levels[levelName] = new LevelData { bestTime = 900f, isUnlocked = true };
         }
 
         SaveToFile(data);
