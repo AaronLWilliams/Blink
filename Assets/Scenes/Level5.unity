@@ -1273,6 +1273,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 442983481}
+    - target: {fileID: 7547830053402202514, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 442983481}
+    - target: {fileID: 7547830053402202514, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677160891530249798, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 442983481}
+    - target: {fileID: 7677160891530249798, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 7869712539307948488, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1356,6 +1372,14 @@ PrefabInstance:
     - target: {fileID: 7964398892811393111, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727882838550625703, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 442983481}
+    - target: {fileID: 8727882838550625703, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetryButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1740,6 +1764,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1592923934776962065, guid: 71984a06ccf17f042bad1cd4d7edd3e6, type: 3}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 2063920204}
     - target: {fileID: 1592923934776962065, guid: 71984a06ccf17f042bad1cd4d7edd3e6, type: 3}
       propertyPath: gameManager
       value: 
@@ -2182,6 +2210,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2063920204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1426752890380977366, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+  m_PrefabInstance: {fileID: 1202365497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

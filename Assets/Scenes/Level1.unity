@@ -1595,6 +1595,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1592923934776962065, guid: 71984a06ccf17f042bad1cd4d7edd3e6, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 4554648588406562901}
+    - target: {fileID: 1592923934776962065, guid: 71984a06ccf17f042bad1cd4d7edd3e6, type: 3}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 4554648588406562902}
+    - target: {fileID: 1592923934776962065, guid: 71984a06ccf17f042bad1cd4d7edd3e6, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1369248024}
@@ -1663,10 +1671,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1369248026}
-    - target: {fileID: 45959049490809849, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RetryButton
-      objectReference: {fileID: 0}
     - target: {fileID: 1252316876093188367, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1679,12 +1683,15 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1369248026}
-    - target: {fileID: 1688116800111387250, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
-      propertyPath: m_text
-      value: Use a and d to move, press space to jump.  Left click to shoot the bullet
-        and right click to teleport to the bullet.
-      objectReference: {fileID: 0}
     - target: {fileID: 6128403744473734509, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1369248026}
+    - target: {fileID: 7547830053402202514, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1369248026}
+    - target: {fileID: 7677160891530249798, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1369248026}
@@ -1772,6 +1779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8727882838550625703, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1369248026}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1788,6 +1799,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4554648588406562901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7964398892811393111, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+  m_PrefabInstance: {fileID: 4554648588406562899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4554648588406562902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1426752890380977366, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+  m_PrefabInstance: {fileID: 4554648588406562899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

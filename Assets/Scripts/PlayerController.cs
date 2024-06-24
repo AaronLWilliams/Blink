@@ -25,10 +25,12 @@ public class PlayerController : MonoBehaviour
     private bool  isReverse = false;
     public static bool isInNoTeloportZone = false;
     public bool isFirePointInNoShootZone = false;
+    private bool isDead;
     public GameObject bulletPrefab;
     public Transform firePoint;
     private GameObject activeBullet;
     public TextMeshProUGUI bulletTypeText;
+    public GameObject gameOver;
 
     private AudioSource audioSource;
     public AudioClip jumpSound;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         rb = GetComponent<Rigidbody2D>();
         //default state for bullet text UI
         bulletTypeText.text = "Normal";
@@ -52,78 +55,85 @@ public class PlayerController : MonoBehaviour
         // Check if the player is on the ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, redLayer);
 
-        //Player Movement
-        float moveInput = Input.GetAxis("Horizontal");
-        if (isGrounded && moveInput != 0)
+        if (!isDead)
         {
-            // Apply acceleration
-            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, moveInput * moveSpeed, acceleration * Time.deltaTime), rb.velocity.y);
-        }
-        else if(isGrounded)
-        {
-            // Apply deceleration
-            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, acceleration * Time.deltaTime), rb.velocity.y);
-        }
-
-        // Jumping
-        if (isGrounded && Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            PlaySound(jumpSound);
-        }
-
-        //Reload Level
-        if (Input.GetKeyDown(KeyCode.R) && !PauseMenu.isPaused)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        //switch bullet type
-        if (Input.GetKeyDown(KeyCode.Q) && !PauseMenu.isPaused)
-        {
-            isReverse = !isReverse;
-            //changes ui element for bullet type
-            if(isReverse)
+            //Player Movement
+            float moveInput = Input.GetAxis("Horizontal");
+            if (isGrounded && moveInput != 0)
             {
-                bulletTypeText.text = "Reverse";
+                // Apply acceleration
+                rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, moveInput * moveSpeed, acceleration * Time.deltaTime), rb.velocity.y);
             }
-            else
+            else if (isGrounded)
             {
-                bulletTypeText.text = "Normal";
-            }
-        }
-
-        //Fires Gun
-        if (Input.GetMouseButtonDown(0) && !isFireCooldown && !PauseMenu.isPaused && !isFirePointInNoShootZone)
-        {
-            // Find every instace tagged Bullet and destroys it
-            GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
-            foreach (GameObject bullet in bullets)
-            {
-                Destroy(bullet);
+                // Apply deceleration
+                rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, acceleration * Time.deltaTime), rb.velocity.y);
             }
 
-            Fire();
-            StartCoroutine(FireCooldown());
-        }
+            // Jumping
+            if (isGrounded && Input.GetButtonDown("Jump"))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                PlaySound(jumpSound);
+            }
 
-        //Teleport to bullet
-        if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused && !isInNoTeloportZone)
-        {
-            Teleport();
+            //Reload Level
+            if (Input.GetKeyDown(KeyCode.R) && !PauseMenu.isPaused)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            //switch bullet type
+            if (Input.GetKeyDown(KeyCode.Q) && !PauseMenu.isPaused)
+            {
+                isReverse = !isReverse;
+                //changes ui element for bullet type
+                if (isReverse)
+                {
+                    bulletTypeText.text = "Reverse";
+                }
+                else
+                {
+                    bulletTypeText.text = "Normal";
+                }
+            }
+
+            //Fires Gun
+            if (Input.GetMouseButtonDown(0) && !isFireCooldown && !PauseMenu.isPaused && !isFirePointInNoShootZone)
+            {
+                // Find every instace tagged Bullet and destroys it
+                GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+                foreach (GameObject bullet in bullets)
+                {
+                    Destroy(bullet);
+                }
+
+                Fire();
+                StartCoroutine(FireCooldown());
+            }
+
+            //Teleport to bullet
+            if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused && !isInNoTeloportZone)
+            {
+                Teleport();
+            }
         }
+        
 
         CheckFirePointPosition();
     }
 
     private void FixedUpdate()
     {
-
-        //player Aiming
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 aimDirection = mousePosition - rb.position;
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        pivotPoint.rotation = Quaternion.Euler(new Vector3(0, 0, aimAngle));
+        if(!isDead)
+        {
+            //player Aiming
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 aimDirection = mousePosition - rb.position;
+            float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+            pivotPoint.rotation = Quaternion.Euler(new Vector3(0, 0, aimAngle));
+        }
+        
     }
 
     public void Fire()
@@ -185,10 +195,13 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Death")
+        if (collision.gameObject.tag == "Death" && !isDead)
         {
+            isDead = true;
             PlaySound(deathSound);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameOver.SetActive(true);
+            //Play death animation
+            gameManager.StopTimer();
         }
     }
 

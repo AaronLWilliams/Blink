@@ -246,8 +246,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4214681941079370749, guid: 593bbfba016204f46b154a2b10244fe0, type: 3}
   firePoint: {fileID: 7450295314727022542}
   bulletTypeText: {fileID: 0}
+  gameOver: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 8a86acce4107089449bcc8e8bd0a9220, type: 3}
-  deathSound: {fileID: 8300000, guid: 9ad6c77c6c9b5dc469d24b1f09067dc4, type: 3}
+  deathSound: {fileID: 8300000, guid: 8f26b46fbdac83e46b6d067106545561, type: 3}
 --- !u!82 &2630594532988813919
 AudioSource:
   m_ObjectHideFlags: 0
