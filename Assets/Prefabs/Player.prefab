@@ -249,6 +249,7 @@ MonoBehaviour:
   gameOver: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 8a86acce4107089449bcc8e8bd0a9220, type: 3}
   deathSound: {fileID: 8300000, guid: 8f26b46fbdac83e46b6d067106545561, type: 3}
+  landingSound: {fileID: 8300000, guid: 3278164bcf5d5244097d6cec12c79add, type: 3}
 --- !u!82 &2630594532988813919
 AudioSource:
   m_ObjectHideFlags: 0

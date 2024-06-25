@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip jumpSound;
     public AudioClip deathSound;
+    public AudioClip landingSound;
 
     Vector2 movementDirection;
     Vector2 mousePosition;
@@ -202,6 +203,11 @@ public class PlayerController : MonoBehaviour
             gameOver.SetActive(true);
             //Play death animation
             gameManager.StopTimer();
+        }
+
+        if ((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("NoBounce")) && isGrounded)
+        {
+            PlaySound(landingSound);
         }
     }
 

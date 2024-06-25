@@ -9,6 +9,7 @@ TagManager:
   - Death
   - NoShoot
   - NoTeleport
+  - Wall
   layers:
   - Default
   - TransparentFX
