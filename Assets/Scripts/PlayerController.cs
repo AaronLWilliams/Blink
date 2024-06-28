@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerController : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip landingSound;
 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     Vector2 movementDirection;
     Vector2 mousePosition;
 
@@ -48,6 +52,8 @@ public class PlayerController : MonoBehaviour
         //default state for bullet text UI
         bulletTypeText.text = "Normal";
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -117,6 +123,18 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(1) && !PauseMenu.isPaused && !isInNoTeloportZone)
             {
                 Teleport();
+            }
+
+            bool isWalking = Mathf.Abs(moveInput) > 0.1f;
+            animator.SetBool("isWalking", isWalking);
+
+            if (moveInput > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (moveInput < 0)
+            {
+                spriteRenderer.flipX = true;
             }
         }
         
