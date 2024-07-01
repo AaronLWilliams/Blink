@@ -883,6 +883,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1237507296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237507297}
+  m_Layer: 3
+  m_Name: endpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237507297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237507296}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.09, y: 5.6399994, z: 0}
+  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2035643135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1451253433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1636,12 +1667,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba2b0e7fe23d9641a90cb730cc98921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPressed: 0
-  isRotating: 0
+  isMoving: 0
   rb: {fileID: 1951042074}
   target: {fileID: 540946818}
-  pivot: {fileID: 2036258587}
+  point: {fileID: 2036258587}
   rotationSpeed: 100
+  targetAngle: 90
+  currentAngle: 0
+  moveDistance: 5
+  moveSpeed: 3
+  targetPosition: {fileID: 1237507297}
+  currentState: 1
 --- !u!61 &1951042073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2139,6 +2175,7 @@ Transform:
   - {fileID: 2015386550}
   - {fileID: 1948243626}
   - {fileID: 540946821}
+  - {fileID: 1237507297}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2036258586
@@ -2151,7 +2188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036258587}
   m_Layer: 3
-  m_Name: pivot point
+  m_Name: point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
