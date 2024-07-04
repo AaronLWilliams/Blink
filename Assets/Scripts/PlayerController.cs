@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D rb;
     public Transform pivotPoint;
+    private Vector3 previousPlatformPosition;
+    private Transform platformTransform;
     public GameManager gameManager;
     public GameObject player;
     private float cooldown = 1f;
@@ -225,10 +228,27 @@ public class PlayerController : MonoBehaviour
         if ((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("NoBounce")) && isGrounded)
         {
             PlaySound(landingSound);
+            platformTransform = collision.transform;
+            previousPlatformPosition = platformTransform.position;
+        }
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if ((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("NoBounce")) && isGrounded && platformTransform != null)
+        {
+            Vector3 platformMovement = platformTransform.position - previousPlatformPosition;
+            transform.position += platformMovement;
+            previousPlatformPosition = platformTransform.position;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("NoBounce"))
+        {
+            platformTransform = null;
         }
     }
 
-    
     private void CheckFirePointPosition()
     {
         Collider2D[] colliders = Physics2D.OverlapPointAll(firePoint.position);
