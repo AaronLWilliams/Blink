@@ -39,7 +39,7 @@ public class LevelSelect : MonoBehaviour
         // Must manually change levels: Change to a dynamic way in the future
         for (int i = 1; i <= levelCount; i++)
         {
-            string levelName = "Level" + i;
+            string levelName = "The First Blink";
             if (!saveData.levels.ContainsKey(levelName))
             {
                 CreateLevelButton(levelName, new LevelData { bestTime = 0f, isUnlocked = false });

@@ -912,7 +912,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 14.172737
+  orthographic size: 12.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1620,6 +1620,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1347854661}
+    - target: {fileID: 1688116800111387250, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
+      propertyPath: m_text
+      value: You cannot teleport to your bullet when it is in the red zone.
+      objectReference: {fileID: 0}
     - target: {fileID: 6128403744473734509, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

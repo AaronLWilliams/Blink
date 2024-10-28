@@ -792,7 +792,8 @@ PrefabInstance:
       objectReference: {fileID: 1594926581}
     - target: {fileID: 1688116800111387250, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_text
-      value: 
+      value: Touching the button with either the bullet or your body will open the
+        door
       objectReference: {fileID: 0}
     - target: {fileID: 6128403744473734509, guid: b7de5a56b004d024d9e7809da19714ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1298,7 +1299,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 32.382893
+  orthographic size: 12.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
