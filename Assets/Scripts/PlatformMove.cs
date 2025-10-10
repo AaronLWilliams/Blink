@@ -46,13 +46,13 @@ public class PlatformMove : MonoBehaviour
                 Vector3 velocity = direction * moveSpeed;
 
                 // Apply velocity to Rigidbody
-                rb.velocity = velocity;
+                rb.linearVelocity = velocity;
 
                 // Check if the Rigidbody is close enough to the target position
                 if (Vector3.Distance(rb.transform.position, targetPosition.position) < 0.001f)
                 {
                     rb.transform.position = targetPosition.position; // Ensure exact position
-                    rb.velocity = Vector3.zero; // Stop the Rigidbody
+                    rb.linearVelocity = Vector3.zero; // Stop the Rigidbody
 
                     // Swap Point and TargetPosition
                     point.position = point.position + targetPosition.position;

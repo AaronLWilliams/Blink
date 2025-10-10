@@ -14,12 +14,12 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        velocityBeforePhysicsUpdate = rb.velocity;
+        velocityBeforePhysicsUpdate = rb.linearVelocity;
     }
 
     public void SetVelocity(Vector2 direction)
     {
-        rb.velocity = direction * speed;
+        rb.linearVelocity = direction * speed;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -36,12 +36,12 @@ public class Bullet : MonoBehaviour
         if (Mathf.Abs(normal.x) > Mathf.Abs(normal.y))
         {
             // Collision on the left or right side, flip the x component
-            rb.velocity = new Vector2(-velocityBeforePhysicsUpdate.x, velocityBeforePhysicsUpdate.y);
+            rb.linearVelocity = new Vector2(-velocityBeforePhysicsUpdate.x, velocityBeforePhysicsUpdate.y);
         }
         else
         {
             // Collision on the top or bottom side, flip the y component
-            rb.velocity = new Vector2(velocityBeforePhysicsUpdate.x, -velocityBeforePhysicsUpdate.y);
+            rb.linearVelocity = new Vector2(velocityBeforePhysicsUpdate.x, -velocityBeforePhysicsUpdate.y);
         }
     }
 

@@ -71,18 +71,18 @@ public class PlayerController : MonoBehaviour
             if (isGrounded && moveInput != 0)
             {
                 // Apply acceleration
-                rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, moveInput * moveSpeed, acceleration * Time.deltaTime), rb.velocity.y);
+                rb.linearVelocity = new Vector2(Mathf.MoveTowards(rb.linearVelocity.x, moveInput * moveSpeed, acceleration * Time.deltaTime), rb.linearVelocity.y);
             }
             else if (isGrounded)
             {
                 // Apply deceleration
-                rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, acceleration * Time.deltaTime), rb.velocity.y);
+                rb.linearVelocity = new Vector2(Mathf.MoveTowards(rb.linearVelocity.x, 0, acceleration * Time.deltaTime), rb.linearVelocity.y);
             }
 
             // Jumping
             if (isGrounded && Input.GetButtonDown("Jump"))
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 PlaySound(jumpSound);
             }
 
@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
             //if isReversed then flip velocity
             if(isReverse)
             {
-                rb.velocity = -rb.velocity;
+                rb.linearVelocity = -rb.linearVelocity;
             }
         }
     }
